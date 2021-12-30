@@ -1,0 +1,16 @@
+1. Create a Local Folder
+2. Create a remote/Website repo
+3. Go to Local Folder
+4. git init
+5. git add .
+6. git commit -m "text_message" 
+7. git remote add origin "copy_URL_from step 2 created repo"
+8. git remote -v
+9. git push -u origin master
+
+// if you want to add some files in your repo follow this steps
+
+1. git commit
+2. git add <|file_name_that_you_want_to_push|>
+3. git commit -m "text_message"
+4. git push -u origin master
