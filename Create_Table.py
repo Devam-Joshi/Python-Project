@@ -139,19 +139,18 @@ def create_table_Ratios(str):
     m_cursor = mydb.cursor()
 
     q=("""create table """ + str + """_Ratios""" +  """ (
-            Mar_2010 DECIMAL(20,2),
-            Mar_2011 DECIMAL(20,2),
-            Mar_2012 DECIMAL(20,2),
-            Mar_2013 DECIMAL(20,2),
-            Mar_2014 DECIMAL(20,2),
-            Mar_2015 DECIMAL(20,2),
-            Mar_2016 DECIMAL(20,2),
-            Mar_2017 DECIMAL(20,2),
-            Mar_2018 DECIMAL(20,2),
-            Mar_2019 DECIMAL(20,2),
-            Mar_2020 DECIMAL(20,2),
-            Mar_2021 DECIMAL(20,2),
-            Sep_2021 DECIMAL(20,2) ) """ )
+            Mar_2010 DECIMAL(20),
+            Mar_2011 DECIMAL(20),
+            Mar_2012 DECIMAL(20),
+            Mar_2013 DECIMAL(20),
+            Mar_2014 DECIMAL(20),
+            Mar_2015 DECIMAL(20),
+            Mar_2016 DECIMAL(20),
+            Mar_2017 DECIMAL(20),
+            Mar_2018 DECIMAL(20),
+            Mar_2019 DECIMAL(20),
+            Mar_2020 DECIMAL(20),
+            Mar_2021 DECIMAL(20) ) """ )
     print(q)     
     m_cursor.execute(q)
     m_cursor.close()
@@ -186,11 +185,11 @@ def create_table_Shareholding_Problem(str):
 # Main Function
 
 if __name__ == '__main__':
-    create_table('infy')
+    # create_table('infy')
     # create_table_Peer_Comparision('infy')
     # create_table_profit_loss('infy')
     # create_table_Balance_Sheet('infy')
     # create_table_Cash_Flows('infy')
-    # create_table_Ratios('infy')
+    create_table_Ratios('infy')
     # create_table_Shareholding_Problem('infy')
 
