@@ -9,6 +9,4 @@ def checklow_Largecap(stk):
     if(cur_val <= 1.10 * l52):
         print(l52 + "\t" + h52 + "\t" + cur_val)
 
-
-
 checklow_Largecap('infy')
