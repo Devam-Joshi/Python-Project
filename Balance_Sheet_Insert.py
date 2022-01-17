@@ -30,7 +30,6 @@ def get_sc_data_web(sname):
             stk_data.insert(i,s_info.find_all('td')[i].text)
             i=i+1
             print(stk_data)
-        
 
         add_quaterly="""insert into """+sname+"""_balance_sheet(
                         Mar_2010,Mar_2011,Mar_2012,Mar_2013,Mar_2014,Mar_2015,Mar_2016,Mar_2017,Mar_2018,Mar_2019,Mar_2020,Mar_2021,Sep_2021)

@@ -34,7 +34,6 @@ def create_table(str):
     m_cursor.execute(q)
     mydb.commit()
    
-
 # Create Tbale For Profit And Loss 
 
 def create_table_profit_loss(str):
@@ -143,10 +142,10 @@ def create_table_Shareholding_Problem(str):
 # Main Function
 
 if __name__ == '__main__':
-    # create_table('adanient')
-    # create_table_profit_loss('adanient')
-    # create_table_Balance_Sheet('adanient')
-    # create_table_Cash_Flows('adanient')
-    create_table_Ratios('adanient')
-    # create_table_Shareholding_Problem('adanient')
+    # create_table('pidilitind')
+    # create_table_profit_loss('adanigreen')
+    # create_table_Balance_Sheet('pidilitind')
+    # create_table_Cash_Flows('pidilitind')
+    # create_table_Ratios('pidilitind')
+    create_table_Shareholding_Problem('adanigreen')
 
