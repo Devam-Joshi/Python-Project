@@ -1,17 +1,45 @@
-# Import Block
-from msvcrt import kbhit
 import requests
 from bs4 import BeautifulSoup
 import mysql.connector as mysqlconnector
 from nsetools import nse
+import aiohttp
+import asyncio
 
-stock_list = ["ABBOTINDIA","ADANIENT"]
+stock_list = ["ABBOTINDIA","ADANIENT","ADANIGREEN","ADANIPORTS","ADANITRANS","ALKEM","AMBUJACEM","APOLLOHOSP","ASIANPAINT","AUROPHARMA","DMART","AXISBANK","BAJAJAUTO","BAJFINANCE","BAJAJFINSV","BAJAJHLDNG","BANDHANBNK","BERGEPAINT","BPCL","BHARTIARTL","BIOCON","BOSCHLTD","BRITANNIA","CADILAHC","CIPLA","COALINDIA","COLPAL","DLF","DABUR","DIVISLAB","DRREDDY","EICHERMOT","GAIL"]
 
-
-
-url =["https://www.screener.in/company/ABBOTINDIA/","https://www.screener.in/company/ADANIENT/consolidated/"]
-
-
+url =["https://www.screener.in/company/ABBOTINDIA/",
+        "https://www.screener.in/company/ADANIENT/consolidated/",
+        "https://www.screener.in/company/ADANIGREEN/consolidated/",
+        "https://www.screener.in/company/ADANIPORTS/consolidated/",
+        "https://www.screener.in/company/ADANITRANS/consolidated/",
+        "https://www.screener.in/company/ALKEM/consolidated/",
+        "https://www.screener.in/company/AMBUJACEM/consolidated/",
+        "https://www.screener.in/company/APOLLOHOSP/consolidated/",
+        "https://www.screener.in/company/ASIANPAINT/consolidated/",
+        "https://www.screener.in/company/AUROPHARMA/consolidated/",
+        "https://www.screener.in/company/DMART/consolidated/",
+        "https://www.screener.in/company/AXISBANK/consolidated/",
+        "https://www.screener.in/company/BAJAJ-AUTO/consolidated/",
+        "https://www.screener.in/company/BAJFINANCE/consolidated/",
+        "https://www.screener.in/company/BAJAJFINSV/consolidated/",
+        "https://www.screener.in/company/BAJAJHLDNG/consolidated/",
+        "https://www.screener.in/company/BANDHANBNK/",
+        "https://www.screener.in/company/BERGEPAINT/consolidated/",
+        "https://www.screener.in/company/BPCL/consolidated/",
+        "https://www.screener.in/company/BHARTIARTL/consolidated/",
+        "https://www.screener.in/company/BIOCON/consolidated/",
+        "https://www.screener.in/company/BOSCHLTD/",
+        "https://www.screener.in/company/BRITANNIA/consolidated/",
+        "https://www.screener.in/company/CADILAHC/consolidated/",
+        "https://www.screener.in/company/CIPLA/consolidated/",
+        "https://www.screener.in/company/COALINDIA/consolidated/",
+        "https://www.screener.in/company/COLPAL/",
+        "https://www.screener.in/company/DLF/consolidated/",
+        "https://www.screener.in/company/DABUR/consolidated/",
+        "https://www.screener.in/company/DIVISLAB/consolidated/",
+        "https://www.screener.in/company/DRREDDY/consolidated/",
+        "https://www.screener.in/company/EICHERMOT/consolidated/",
+        "https://www.screener.in/company/GAIL/consolidated/"]
 # Database Connection
 
 mydb = mysqlconnector.connect(
@@ -22,31 +50,12 @@ mydb = mysqlconnector.connect(
     database="stockmarket")
 
 m_cursor = mydb.cursor()
-# Create Table For Quaterly Result
-def main_create_table(j):
-    def create_table():
-        q=("""create table """ + j + """_quaterlyresult""" +  """ (
-                field_name VARCHAR(20),
-                Dec_2018 VARCHAR(20),
-                Mar_2019 VARCHAR(20),
-                Jun_2019 VARCHAR(20),
-                Sep_2019 VARCHAR(20),
-                Dec_2019 VARCHAR(20),
-                Mar_2020 VARCHAR(20),
-                Jun_2020 VARCHAR(20),
-                Sep_2020 VARCHAR(20),
-                Dec_2020 VARCHAR(20),
-                Mar_2021 VARCHAR(20),
-                Jun_2021 VARCHAR(20),
-                Sep_2021 VARCHAR(20) ) """ )
-        print(q)     
-        m_cursor.execute(q)
-        mydb.commit()
-    create_table()
+
 
 def insert_main(r,j):
         soup= BeautifulSoup(r.text,'html.parser')
-        quat_table= soup.find('table',class_='data-table responsive-text-nowrap')
+        # print(soup)
+        quat_table= soup.find('div',class_='responsive-holder fill-card-width')    
         def get_Sales_data_web():
             stk_data =[]
             for s_info in quat_table.find_all('tbody'):
@@ -256,13 +265,8 @@ if __name__ == '__main__':
     
     i=0
     while(i<len(stock_list)):
-        main_create_table(stock_list[i])
         r=requests.get(url[i])
         print(url[i])
         print(r)
         insert_main(r,stock_list[i])
-        i=i+1    
-
-
-
-    
+        i=i+1   
