@@ -48,30 +48,29 @@ def insert_ratios(r,j):
         rows=[]
         c=0
         stk_length = len(stk_data)
-        # get heading
-        for s_info in ratios.find_all('thead'):
-            print(rows)
-            rows_length = len(rows)
-      
-            if(rows_length == 0):
-                rows.insert(0,"field_name")
-                print(rows_length)
-            else:
-                while(rows_length<len(rows)):
-                    rows.insert(c,s_info.find_all('th')[c].text)
-                    c=c+1      
-            rows_length=len(rows)
-            print(rows_length)
-        # Get Main Data
-            
-        for s_info in ratios.find_all('tbody'):
-                row1= s_info.find_all('tr')
+
+        for stock_list in ratios.find_all('thead'):
+                row1= stock_list.find_all('th')
+                while(c<=len(rows)):
+                    if(len(rows)==0):
+                        # rows.insert(c,"field_name")
+                        rows.insert(c,stock_list.find_all('th')[0].text)
+                        print(len(rows))
+                        c=c+1
+                        print(c)
+                    else:
+                        while(c<=len(rows)):
+                            rows.insert(c,stock_list.find_all('th')[c].text)
+                            c=c+1
+                            print(rows)
+        for stock_list in ratios.find_all('tbody'):
+                row1= stock_list.find_all('tr')
                 i=14
                 while(i<=23):
-                    stk_data.insert(i,s_info.find_all('td')[i].text)
+                    stk_data.insert(i,stock_list.find_all('td')[i].text)
                     i=i+1
                     print(stk_data)
-
+            
                 add_quaterly="""insert into """+j+"""_ratios("""+str(rows)+""" ) values("InventorDays","""+str(stk_data)+""" )"""
                 print(add_quaterly,stk_data)
                 # m_cursor.execute(add_quaterly,stk_data)
@@ -86,8 +85,7 @@ def insert_ratios(r,j):
                 stk_data.insert(i,s_info.find_all('td')[i].text)
                 i=i+1
                 print(stk_data)
-            
-
+        
             add_quaterly="""insert into """+j+"""_ratios(
                             rows)
                         values(rows)
