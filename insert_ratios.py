@@ -49,30 +49,29 @@ def insert_ratios(r,j):
         c=0
         stk_length = len(stk_data)
 
-        for stock_list in ratios.find_all('thead'):
-                row1= stock_list.find_all('th')
-                while(c<=len(rows)):
-                    if(len(rows)==0):
-                        # rows.insert(c,"field_name")
-                        rows.insert(c,stock_list.find_all('th')[0].text)
-                        print(len(rows))
-                        c=c+1
-                        print(c)
-                    else:
-                        while(c<=len(rows)):
-                            rows.insert(c,stock_list.find_all('th')[c].text)
-                            c=c+1
-                            print(rows)
+        # for stock_list in ratios.find_all('thead'):
+        #         row1= stock_list.find_all('th')
+        #         if(len(rows)==0):
+        #                 # rows.insert(c,"field_name")
+        #             rows.insert(c,stock_list.find_all('th')[0].text)
+        #             print(len(rows))
+        #             c=c+1
+        #             print(c)
+        #         else:
+        #             while(c<=len(rows)):
+        #                 rows.insert(c,stock_list.find_all('th')[c].text)
+        #                 c=c+1
+        #                 print(rows)
         for stock_list in ratios.find_all('tbody'):
                 row1= stock_list.find_all('tr')
                 i=14
                 while(i<=23):
                     stk_data.insert(i,stock_list.find_all('td')[i].text)
-                    i=i+1
                     print(stk_data)
+                    i=i+1
             
                 add_quaterly="""insert into """+j+"""_ratios("""+str(rows)+""" ) values("InventorDays","""+str(stk_data)+""" )"""
-                print(add_quaterly,stk_data)
+                # print(add_quaterly,stk_data)
                 # m_cursor.execute(add_quaterly,stk_data)
                 mydb.commit()
 

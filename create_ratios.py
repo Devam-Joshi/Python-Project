@@ -119,24 +119,17 @@ m_cursor = mydb.cursor()
 def main_create_table(j):
     def create_table():
         q=("""create table """ + j + """_ratios""" +  """ (
-                field_name VARCHAR(20),
-                Mar_2010 VARCHAR(20),
-                Mar_2011 VARCHAR(20),
-                Mar_2012 VARCHAR(20),
-                Mar_2013 VARCHAR(20),
-                Mar_2014 VARCHAR(20),
-                Mar_2015 VARCHAR(20),
-                Mar_2016 VARCHAR(20),
-                Mar_2017 VARCHAR(20),
-                Mar_2018 VARCHAR(20),
-                Mar_2019 VARCHAR(20),
-                Mar_2020 VARCHAR(20),
-                Mar_2021 VARCHAR(20) ) """ )
+                Year VARCHAR(20),
+                Debator_days VARCHAR(20),
+                Inventory_days VARCHAR(20),
+                Days_payable VARCHAR(20),
+                Cash_conversion_cycle VARCHAR(20),
+                Working_capital_days VARCHAR(20),
+                ROCE VARCHAR(20)) """ )
         print(q)     
         m_cursor.execute(q)
         mydb.commit()
     create_table()
-
 
 if __name__ == '__main__':
 

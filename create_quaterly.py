@@ -118,20 +118,19 @@ m_cursor = mydb.cursor()
 # Create Table For Quaterly Result
 def main_create_table(j):
     def create_table():
-        q=("""create table """ + j + """_quaterlyresult""" +  """ (
-                field_name VARCHAR(20),
-                Dec_2018 VARCHAR(20),
-                Mar_2019 VARCHAR(20),
-                Jun_2019 VARCHAR(20),
-                Sep_2019 VARCHAR(20),
-                Dec_2019 VARCHAR(20),
-                Mar_2020 VARCHAR(20),
-                Jun_2020 VARCHAR(20),
-                Sep_2020 VARCHAR(20),
-                Dec_2020 VARCHAR(20),
-                Mar_2021 VARCHAR(20),
-                Jun_2021 VARCHAR(20),
-                Sep_2021 VARCHAR(20) ) """ )
+        q=("""create table """ + j + """_quaterly""" +  """ (
+                Year VARCHAR(20),
+                Sales VARCHAR(20),
+                Expenses VARCHAR(20),
+                Operating_Profit VARCHAR(20),
+                OPM VARCHAR(20),
+                Other_Income VARCHAR(20),
+                Intrest VARCHAR(20),
+                Deprecation VARCHAR(20),
+                Profit_before_tax VARCHAR(20),
+                Tax VARCHAR(20),
+                Net_profit VARCHAR(20),
+                EPS_In_rs VARCHAR(20)) """ )
         print(q)     
         m_cursor.execute(q)
         mydb.commit()
