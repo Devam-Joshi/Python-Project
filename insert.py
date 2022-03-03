@@ -1,4 +1,3 @@
-from pickle import TRUE
 import pickle
 import requests
 from bs4 import BeautifulSoup
@@ -17,7 +16,7 @@ mydb = mysqlconnector.connect(
 stock_list = ["abbotindia","adanient"]
 
 url =["https://www.screener.in/company/ABBOTINDIA/",
-        "https://www.screener.in/company/ADANIENT/consolidated/"]
+    "https://www.screener.in/company/ADANIENT/consolidated/"]
 
 
 # Define Variables
@@ -71,7 +70,7 @@ def insert_ratios(r,j):
             print(add_quaterly,debator_days_11)
             m_cursor.execute(add_quaterly1,debator_days_11)
             mydb.commit()
-        get_debator_day_data_web()
+    get_debator_day_data_web()
 if __name__ == '__main__':
     
     c=0
