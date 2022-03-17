@@ -21,18 +21,22 @@ mydb = mysqlconnector.connect(
     database="stockmarket")
 
 m_cursor = mydb.cursor()
-
 # Create Table For Quaterly Result
 def main_create_table(j):
     def create_table():
-        q=("""create table """ + j + """_ratios""" +  """ (
+        q=("""create table """ + j + """_balancesheet""" +  """ (
                 Year VARCHAR(20),
-                Debator_days VARCHAR(20),
-                Inventory_days VARCHAR(20),
-                Days_payable VARCHAR(20),
-                Cash_conversion_cycle VARCHAR(20),
-                Working_capital_days VARCHAR(20),
-                ROCE VARCHAR(20)) """ )
+                share_capital VARCHAR(20),
+                reserves VARCHAR(20),
+                borrowings VARCHAR(20),
+                oliabilities VARCHAR(20),
+                toliabilities VARCHAR(20),
+                fixed_ass varchar(20),
+                cwip VARCHAR(20),
+                investment varchar(20),
+                oth_ass varchar(20),
+                tot_ass VARCHAR(20)
+                )""" )
         print(q)     
         m_cursor.execute(q)
         mydb.commit()

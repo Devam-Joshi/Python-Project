@@ -5,6 +5,9 @@ from bs4 import BeautifulSoup
 import mysql.connector as mysqlconnector
 from nsetools import nse
 
+
+# Define Stock List
+
 stock_list = ["ACC","ADANIENT","ADANIGREEN","ADANIPORTS","ADANITRANS","ALKEM","AMBUJACEM","APOLLOHOSP","AUROPHARMA","DMART","BAJAJHLDNG","BANDHANBNK","BERGEPAINT","BIOCON","BOSCHLTD","CADILAHC","CIPLA","CHOLAFIN","COLPAL","DLF","DABUR","GAIL","GLAND","HDFCAMC","HAVELLS","HINDPETRO","ICICIGI","ICICIPRULI","IGL","INDUSTOWER","NAUKRI","INDIGO","JINDALSTEL","JUBLFOOD","LTI","LUPIN","MARICO","MUTHOOTFIN","NMDC","PIIND","PIDILITIND","PEL","PGHH","PNB","SBICARD","SIEMENS","SAIL","TORNTPHARM","MCDOWELLN","VEDL","YESBANK"]
 
 
@@ -39,8 +42,9 @@ def main_create_table(j):
         mydb.commit()
     create_table()
 
+# Main Function
 
 if __name__ == '__main__':
 
     for j in stock_list:
-        main_create_table(j)
+        main_create_table(j) # Call Function

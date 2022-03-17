@@ -8,6 +8,7 @@ from nsetools import nse
 stock_list = ["ACC","ADANIENT","ADANIGREEN","ADANIPORTS","ADANITRANS","ALKEM","AMBUJACEM","APOLLOHOSP","AUROPHARMA","DMART","BAJAJHLDNG","BERGEPAINT","BIOCON","BOSCHLTD","CIPLA","COLPAL","DLF","DABUR","GAIL","GLAND","HDFCAMC","HAVELLS","HINDPETRO","ICICIGI","ICICIPRULI","IGL","INDUSTOWER","NAUKRI","INDIGO","JINDALSTEL","JUBLFOOD","LTI","LUPIN","MARICO","MUTHOOTFIN","NMDC","PIIND","PIDILITIND","PEL","PGHH","SIEMENS","SAIL","TORNTPHARM","VEDL"]
 
 base_url="https://www.screener.in/company/"
+postf="/consolidated/"
 
 # Database Connection
 
@@ -105,7 +106,7 @@ if __name__ == '__main__':
     
     i=0
     while(i<len(stock_list)):
-        url=base_url+stock_list[i]
+        url=base_url+stock_list[i]+postf
         time.sleep(4)
         r=requests.get(url)
         print(url)
