@@ -15,7 +15,6 @@ stock_list = ["ACC","ADANIENT","ADANIGREEN","ADANIPORTS","ADANITRANS","ALKEM","A
 
 mydb = mysqlconnector.connect(
     host="localhost",
-    port="3307",
     user="root",
     password="",
     database="stockmarket")
@@ -40,7 +39,7 @@ def main_create_table(j):
                 divinded VARCHAR(20)
                 )""" )
         print(q)     
-        m_cursor.execute(q)
+        # m_cursor.execute(q)
         mydb.commit()
     create_table()
 

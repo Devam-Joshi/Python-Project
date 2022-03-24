@@ -15,7 +15,6 @@ stock_list = ["ACC","ADANIENT","ADANIGREEN","ADANIPORTS","ADANITRANS","ALKEM","A
 
 mydb = mysqlconnector.connect(
     host="localhost",
-    port="3307",
     user="root",
     password="",
     database="stockmarket")

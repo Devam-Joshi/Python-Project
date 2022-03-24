@@ -18,7 +18,6 @@ postf="/consolidated/"
 
 mydb = mysqlconnector.connect(
     host="localhost",
-    port="3307",
     user="root",
     password="",
     database="stockmarket")
