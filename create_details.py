@@ -23,13 +23,18 @@ m_cursor = mydb.cursor()
 # Create Table For Quaterly Result
 def main_create_table(j):
     def create_table():
-        q=("""create table """ + j + """_shareholding""" +  """ (
-                Year VARCHAR(20),
-                promotor VARCHAR(20),
-                flls VARCHAR(20),
-                dlls VARCHAR(20),
-                public VARCHAR(20),
-                government VARCHAR(20))""" )
+        q=("""create table """ + j + """_company_ratios""" +  """ (
+                market_cap VARCHAR(20),
+                current_price VARCHAR(20),
+                high VARCHAR(20),
+                low VARCHAR(20),
+                stock_pe VARCHAR(20),
+                book_value VARCHAR(20),
+                divinded VARCHAR(20),
+                roce varchar(20),
+                roe VARCHAR(20),
+                face_value varchar(20)
+                )""" )
         print(q)     
         m_cursor.execute(q)
         mydb.commit()

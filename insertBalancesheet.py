@@ -95,7 +95,7 @@ def insert_main(r,j):
         add_val="insert into {tname}_balancesheet values ('{k}','{r1}','{r2}','{r3}','{r4}','{r5}','{r6}','{r7}','{r8}','{r9}','{r10}')".format(tname=j, k=key[ins],r1=bs1[ins],r2=bs2[ins],r3=bs3[ins],r4=bs4[ins],r5=bs5[ins],r6=bs6[ins],r7=bs7[ins],r8=bs8[ins],r9=bs9[ins],r10=bs10[ins])
         ins=ins+1
         print(add_val)
-        # m_cursor.execute(add_val)
+        m_cursor.execute(add_val)
         mydb.commit()  
      
 if __name__ == '__main__':
